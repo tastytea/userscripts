@@ -1,0 +1,8 @@
+= Userscripts
+
+I collect my userscripts here. I use them with
+https://addons.mozilla.org/firefox/addon/greasemonkey/[Greasemonkey], but they
+should work with most userscript-managers.
+
+Unless otherwise noted, the scripts are licensed under the
+https://schlomp.space/tastytea/userscripts/src/branch/main/LICENSE[GPLv3].

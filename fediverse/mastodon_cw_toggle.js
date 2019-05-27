@@ -2,7 +2,7 @@
 // @name        Mastodon CW toggle
 // @description Toggles the visibility of all statuses with content warnings.
 // @namespace   tastytea.de
-// @version     2019-05-27
+// @version     2019-05-27_2
 // @grant       none
 // @run-at      document-end
 // ==/UserScript==
@@ -30,16 +30,18 @@ function toggle()
     }
 }
 
-// If there is a “Show more”-button, add our “Toggle all CWs”-button, if we
-// didn't do so before.
-if (document.getElementsByClassName("status__content__spoiler-link").length > 0
-    && document.getElementById("global-cw-toggle") === null)
+// Add a “Toggle all CWs”-button.
+function add_button()
 {
-    // If there is no element named “column-1”, do nothing.
+    // If there is no element named “column-1”, use the footer.
     var root = document.getElementsByClassName("column-1")[0];
     if (root == null)
     {
-        return;
+        root = document.getElementsByClassName("footer")[0];
+        if (root == null)
+        {
+            return;
+        }
     }
 
     // Create a div, necessary to get the correct styling for the button.
@@ -57,4 +59,11 @@ if (document.getElementsByClassName("status__content__spoiler-link").length > 0
     root.insertBefore(div, root.firstChild);
 
     button.onclick = toggle;
+}
+
+// If there is a “Show more”-button, add our button, if we didn't do so before.
+if (document.getElementsByClassName("status__content__spoiler-link").length > 0
+    && document.getElementById("global-cw-toggle") === null)
+{
+    add_button();
 }

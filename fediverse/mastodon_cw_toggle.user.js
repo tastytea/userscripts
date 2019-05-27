@@ -5,6 +5,7 @@
 // @version     2019-05-27_2
 // @grant       none
 // @run-at      document-end
+// @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
 // ==/UserScript==
 
 // Copyright © 2019 tastytea <tastytea@tastytea.de>.

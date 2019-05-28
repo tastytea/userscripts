@@ -4,7 +4,7 @@
 // @version     2019.05.28.4
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
-// @license     GPL-3.0
+// @license     GPL-3.0-only
 // @namespace   tastytea.de
 // @homepageURL https://schlomp.space/tastytea/userscripts
 // @supportURL  https://schlomp.space/tastytea/userscripts/issues

@@ -1,22 +1,20 @@
 // ==UserScript==
 // @name        Mastodon CW toggle
 // @description Toggles the visibility of all statuses with content warnings.
+// @version     2019.05.28.4
+// @author      tastytea
+// @copyright   2019, tastytea (https://tastytea.de/)
+// @license     GPL-3.0
 // @namespace   tastytea.de
-// @version     2019.05.28.3
 // @homepageURL https://schlomp.space/tastytea/userscripts
 // @supportURL  https://schlomp.space/tastytea/userscripts/issues
 // @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
 // @grant       none
-// @run-at      document-end
-// @inject-into content
 // @match       https://*/users/*/statuses/*
 // @match       https://*/@*/*
+// @run-at      document-end
+// @inject-into content
 // ==/UserScript==
-
-// Copyright © 2019 tastytea <tastytea@tastytea.de>.
-// License GPLv3: GNU GPL version 3 <https://www.gnu.org/licenses/gpl-3.0.html>.
-// This program comes with ABSOLUTELY NO WARRANTY. This is free software,
-// and you are welcome to redistribute it under certain conditions.
 
 // Toggle the visibility of each status with CW.
 function toggle()

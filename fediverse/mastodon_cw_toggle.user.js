@@ -2,7 +2,7 @@
 // @name        Mastodon CW toggle
 // @description Toggles the visibility of all statuses with content warnings.
 // @namespace   tastytea.de
-// @version     2019-05-27_2
+// @version     2019-05-28_1
 // @grant       none
 // @run-at      document-end
 // @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
@@ -18,6 +18,11 @@ function toggle()
 {
     for (let status of document.getElementsByClassName("e-content"))
     {
+        if (status.parentElement.firstChild.firstChild.className !==
+            "p-summary")        // Skip if status has no CW.
+        {
+            continue;
+        }
         var style = status.getAttribute("style");
         if (style.search("none") > -1)
         {

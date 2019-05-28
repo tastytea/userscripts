@@ -2,10 +2,13 @@
 // @name        Mastodon CW toggle
 // @description Toggles the visibility of all statuses with content warnings.
 // @namespace   tastytea.de
-// @version     2019-05-28_1
+// @version     2019.05.28.2
+// @homepageURL https://schlomp.space/tastytea/userscripts
+// @supportURL  https://schlomp.space/tastytea/userscripts/issues
+// @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
 // @grant       none
 // @run-at      document-end
-// @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
+// @inject-into content
 // ==/UserScript==
 
 // Copyright © 2019 tastytea <tastytea@tastytea.de>.

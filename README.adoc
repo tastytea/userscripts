@@ -1,9 +1,7 @@
 = Userscripts
 
-I collect my userscripts here. To use them you will need a userscript-manager
-like https://addons.mozilla.org/firefox/addon/greasemonkey/[Greasemonkey],
-https://addons.mozilla.org/firefox/addon/tampermonkey/[Tampermonkey] or
-https://addons.mozilla.org/firefox/addon/violentmonkey/[Violentmonkey].
+I collect my userscripts here. To use them you need a
+[userscript-manager](https://openuserjs.org/about/Userscript-Beginners-HOWTO#how-do-i-get-going-).
 
 To install a script, navigate to the file and click on the “Raw”-button at the
 top right. Your userscript-manager should then ask you to install it.

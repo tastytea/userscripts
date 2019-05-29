@@ -6,5 +6,9 @@ https://openuserjs.org/about/Userscript-Beginners-HOWTO#how-do-i-get-going-[user
 To install a script, navigate to the file and click on the “Raw”-button at the
 top right. Your userscript-manager should then ask you to install it.
 
+The scripts in this repository are mirrored to
+https://openuserjs.org/users/tastytea/scripts[OpenUserJS.org] for better
+discoverability and to work around limitations in certain browsers.
+
 Unless otherwise noted, the scripts are licensed under the
 https://schlomp.space/tastytea/userscripts/src/branch/main/LICENSE[GPLv3].

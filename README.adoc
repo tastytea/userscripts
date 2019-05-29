@@ -1,7 +1,7 @@
 = Userscripts
 
 I collect my userscripts here. To use them you need a
-[userscript-manager](https://openuserjs.org/about/Userscript-Beginners-HOWTO#how-do-i-get-going-).
+https://openuserjs.org/about/Userscript-Beginners-HOWTO#how-do-i-get-going-[userscript-manager].
 
 To install a script, navigate to the file and click on the “Raw”-button at the
 top right. Your userscript-manager should then ask you to install it.

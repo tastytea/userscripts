@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Mastodon CW toggle
 // @description Toggles the visibility of all statuses with content warnings on status-pages.
-// @version     2019.05.29.1
+// @version     2019.05.29.2
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -44,10 +44,10 @@ function add_button()
 {
     // If there is no element named “column-1”, use the footer.
     var root = document.getElementsByClassName("column-1")[0];
-    if (root === null)
+    if (root === undefined)
     {
         root = document.getElementsByClassName("footer")[0];
-        if (root === null)
+        if (root === undefined)
         {
             return;
         }

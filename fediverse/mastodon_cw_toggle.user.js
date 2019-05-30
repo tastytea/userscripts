@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Mastodon CW toggle
-// @description Toggles the visibility of all statuses with content warnings on status-pages.
-// @version     2019.05.29.3
+// @description Toggles the visibility of all statuses with content warnings on status-pages and profile-pages.
+// @version     2019.05.30.1
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -11,7 +11,7 @@
 // @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/fediverse/mastodon_cw_toggle.user.js
 // @grant       none
 // @match       https://*/users/*/statuses/*
-// @match       https://*/@*/*
+// @match       https://*/@*
 // @run-at      document-end
 // @inject-into content
 // ==/UserScript==

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Redirect DHL tracking page
 // @description Redirects to a more static version of the tracking page that doesn't reset after a short time.
-// @version     2019.06.04.1
+// @version     2019.06.04.2
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -11,7 +11,7 @@
 // @downloadURL https://schlomp.space/tastytea/userscripts/raw/branch/main/status-pages/dhl_redirect_tracking_page.user.js
 // @grant       none
 // @match       https://*.dhl.de/*idc=*
-// @run-at      document-end
+// @run-at      document-start
 // @inject-into content
 // ==/UserScript==
 

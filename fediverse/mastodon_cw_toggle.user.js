@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Mastodon CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages and profile-pages.
-// @version     2019.06.06.1
+// @version     2019.06.06.2
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -26,7 +26,7 @@ function toggle()
         {
             continue;
         }
-        const style = status.getAttribute("style");
+        let style = status.getAttribute("style");
         if (style.search("none") > -1)
         {
             style = style.replace("none", "block");

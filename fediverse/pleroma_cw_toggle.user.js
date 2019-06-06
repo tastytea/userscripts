@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages and profile-pages.
-// @version     2019.06.07.2
+// @version     2019.06.07.3
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -17,6 +17,7 @@
 // ==/UserScript==
 
 let interval;
+let counter = 0;
 
 // Toggle the visibility of statuses with CW.
 function toggle()
@@ -36,6 +37,13 @@ function toggle()
 
 function add_button()
 {
+    ++counter;
+    // If this is not Pleroma or we tried 10 times, disable interval.
+    if (counter >= 10 || document.getElementById("app") === null)
+    {
+        clearInterval(interval);
+        return;
+    }
     const main = document.getElementsByClassName("main")[0];
 
     // If conversation-heading is not there, try profile-tabs.

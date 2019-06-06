@@ -26,7 +26,7 @@ function toggle()
         {
             continue;
         }
-        var style = status.getAttribute("style");
+        const style = status.getAttribute("style");
         if (style.search("none") > -1)
         {
             style = style.replace("none", "block");
@@ -43,7 +43,7 @@ function toggle()
 function add_button()
 {
     // If there is no element named “column-1”, use the footer.
-    var root = document.getElementsByClassName("column-1")[0];
+    let root = document.getElementsByClassName("column-1")[0];
     if (root === undefined)
     {
         root = document.getElementsByClassName("footer")[0];
@@ -55,13 +55,13 @@ function add_button()
     }
 
     // Create a div, necessary to get the correct styling for the button.
-    var div = document.createElement("div");
+    const div = document.createElement("div");
     div.setAttribute("id", "global-cw-toggle");
     div.setAttribute("class", "status__content");
     div.setAttribute("style", "margin-bottom: 0.5em;");
 
     // Create the button.
-    var button = document.createElement("a");
+    const button = document.createElement("a");
     button.setAttribute("class", "status__content__spoiler-link");
     button.appendChild(document.createTextNode("Toggle all CWs"));
 

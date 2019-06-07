@@ -2,7 +2,7 @@
 // @name           Expand rbb24.de comments
 // @description    Loads all comments under articles on rbb24.de and expands them.
 // @description:de Lädt alle kommentare unter artikeln auf rbb24.de und klappt sie aus.
-// @version        2019.06.07.6
+// @version        2019.06.07.7
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -32,9 +32,7 @@ function expand_comments()
     }
 
     setTimeout(function()       // Wait for comments to load.
-               {
-                   showall[0].click();
-               }, 1000);
+               { showall[0].click(); }, 10000);
 }
 
 expand_comments();

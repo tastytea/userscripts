@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages and profile-pages.
-// @version     2019.06.07.3
+// @version     2019.06.07.4
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -39,7 +39,7 @@ function add_button()
 {
     ++counter;
     // If this is not Pleroma or we tried 10 times, disable interval.
-    if (counter >= 10 || document.getElementById("app") === null)
+    if (counter > 10 || document.getElementById("app") === null)
     {
         clearInterval(interval);
         return;

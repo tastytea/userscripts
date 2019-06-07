@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name           Expand rbb24.de comments
-// @description    Expands comments under articles on rbb24.de.
-// @description:de Klappt kommentare unter artikeln auf rbb24.de aus.
-// @version        2019.06.07.2
+// @description    Loads all comments under articles on rbb24.de and expands them.
+// @description:de Lädt alle kommentare unter artikeln auf rbb24.de und klappt sie aus.
+// @version        2019.06.07.3
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -18,10 +18,11 @@
 
 function expand_comments()
 {
-    for (let comment of document.getElementsByClassName("manualteasershorttext"))
-    {
-        comment.click();
-    }
+    document.getElementsByClassName("load_more_comments")[0].click();
+    setTimeout(function()       // Wait for comments to load.
+               {
+                   document.getElementsByClassName("show_all")[0].click();
+               }, 1000);
 }
 
 expand_comments();

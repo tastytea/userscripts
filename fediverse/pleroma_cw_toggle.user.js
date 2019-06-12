@@ -83,11 +83,11 @@ function check()
         }
     }
 
-    const main = document.getElementsByClassName("main")[0];
     const root = get_root_elements();
     // if root element and a status was found, disable interval and add button.
     if (root.length !== 0
-        && main.getElementsByClassName("status-content").length > 0)
+        && root[0].parentElement
+        .getElementsByClassName("status-content").length > 0)
     {
         if (!is_timeline)
         {
@@ -96,9 +96,10 @@ function check()
 
         for (let element of root)
         {
+            const parent = element.parentElement;
             // Only add button if one or more statuses have a CW.
-            if (main.getElementsByClassName("cw-status-hider").length > 0
-                || main.getElementsByClassName("status-unhider").length > 0)
+            if (parent.getElementsByClassName("cw-status-hider").length > 0
+                || parent.getElementsByClassName("status-unhider").length > 0)
             {
                 if (element.getElementsByClassName("global-cw-toggle")
                     .length > 0) // Skip if button is already there.

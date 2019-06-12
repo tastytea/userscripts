@@ -37,6 +37,7 @@ function toggle(parent)
     }
 }
 
+// Returns all conversation-headings or profile-tabs.
 function get_root_elements()
 {
     const main = document.getElementsByClassName("main")[0];
@@ -64,6 +65,7 @@ function add_button(parent)
     parent.append(span);
 }
 
+// Check if we need to add a button.
 function check()
 {
     const re = new RegExp(

@@ -69,7 +69,7 @@ function add_button(parent)
 function check()
 {
     const re = new RegExp(
-        '(/main/(friends|public|all)|/users/[^/]+/(mentions|dms))#?$');
+        '(/main/(friends|public|all)|/users/[^/]+(/(mentions|dms)))?#?$');
     const is_timeline = re.test(window.location.href);
 
     if (!is_timeline)           // If we are on a timeline, don't stop checking.

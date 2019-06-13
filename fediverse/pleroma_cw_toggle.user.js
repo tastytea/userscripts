@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages, profile-pages and timelines.
-// @version     2019.06.12.3
+// @version     2019.06.13.1
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -55,14 +55,24 @@ function add_button(parent)
 {
     const span = document.createElement("span");
     const button = document.createElement("a");
+
     button.setAttribute("class", "global-cw-toggle");
-    button.setAttribute("style", "margin-left: 1em; cursor: pointer;");
+    button.setAttribute(
+        "style", "margin-left: 1em; margin-right: 0.5em; cursor: pointer;");
     button.appendChild(document.createTextNode("Toggle all CWs"));
     button.addEventListener('click', function()
                             { toggle(parent.parentElement); });
-
     span.append(button);
-    parent.append(span);
+
+    const otherspans = parent.getElementsByTagName("span");
+    if (otherspans.length > 1)  // Place it left of “Collapse”.
+    {
+        parent.insertBefore(span, otherspans[1]);
+    }
+    else
+    {
+        parent.append(span);
+    }
 }
 
 // Check if we need to add a button.

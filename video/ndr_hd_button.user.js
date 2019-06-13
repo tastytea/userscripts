@@ -27,6 +27,8 @@ function add_button(parent, url)
     const button = document.createElement("a");
     button.setAttribute("class", "button download");
     button.setAttribute("href", url);
+    // Needed for shine effect
+    button.setAttribute("style", "position: relative;");
 
     const spanshine = document.createElement("span");
     spanshine.setAttribute("class", "buttonshine");

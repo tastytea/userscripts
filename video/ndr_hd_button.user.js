@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name           NDR HD button
-// @description    Adds a download-button for the HD-version of the video on ndr.de.
-// @description:de Fügt einen download-button für die HD-version des videos auf ndr.de hinzu.
-// @version        2019.06.14.2
+// @description    Adds a download-button for the HD-version of videos on ndr.de.
+// @description:de Fügt einen download-button für die HD-version von videos auf ndr.de hinzu.
+// @version        2019.06.14.3
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only

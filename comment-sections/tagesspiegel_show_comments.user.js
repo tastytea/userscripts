@@ -2,7 +2,7 @@
 // @name           Show tagesspiegel.de comments
 // @description    Show all comments on tagesspiegel.de
 // @description:de Alle kommentare auf tagesspiegel.de anzeigen.
-// @version        2019.06.08.1
+// @version        2019.06.14.1
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -38,6 +38,16 @@ function show_comments()
     if (showcomments.length > 0)
     {
         showcomments[0].click();
+        show_all_answers();
+    }
+}
+
+function show_all_answers()
+{
+    const showanswers = document.getElementsByClassName("ts-comments-expand-all");
+    if (showanswers.length > 0)
+    {
+        showanswers[0].click();
     }
 }
 

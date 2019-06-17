@@ -1,15 +1,15 @@
 // ==UserScript==
-// @name           NDR HD button
-// @description    Adds a download-button for the HD-version of videos on ndr.de.
-// @description:de Fügt einen download-button für die HD-version von videos auf ndr.de hinzu.
-// @version        2019.06.14.3
+// @name           NDR download button
+// @description    Adds a download-button for every video and audio on ndr.de.
+// @description:de Fügt einen download-button für jedes videos und audio auf ndr.de hinzu.
+// @version        2019.06.17.1
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
 // @namespace      tastytea.de
 // @homepageURL    https://schlomp.space/tastytea/userscripts
 // @supportURL     https://schlomp.space/tastytea/userscripts/issues
-// @downloadURL    https://schlomp.space/tastytea/userscripts/raw/branch/main/video/ndr_hd_button.user.js
+// @downloadURL    https://schlomp.space/tastytea/userscripts/raw/branch/main/video/ndr_download_button.user.js
 // @grant          none
 // @match          https://*.ndr.de/*
 // @run-at         document-end
@@ -19,11 +19,23 @@
 function get_video_url()
 {
     const element = document.querySelector('[itemprop=contentUrl]');
-    return element.getAttribute("content").replace("hq.mp4", "hd.mp4");
+    let url = element.getAttribute("content");
+    if (url.search("/TV-") > -1) // Only replace in URL if it is a video.
+    {
+        url = url.replace("hq.mp4", "hd.mp4");
+    }
+
+    return url;
 }
 
 function add_button(parent, url)
 {
+    let buttontext = "Download";
+    if (url.search("hd.mp4") > -1)
+    {
+        buttontext += " HD";
+    }
+
     const button = document.createElement("a");
     button.setAttribute("class", "button download");
     button.setAttribute("href", url);
@@ -38,7 +50,7 @@ function add_button(parent, url)
     spandl.setAttribute("class", "icon icon_download");
     button.appendChild(spandl);
 
-    button.appendChild(document.createTextNode("Download HD"));
+    button.appendChild(document.createTextNode(buttontext));
 
     parent.appendChild(button);
 }

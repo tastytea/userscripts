@@ -2,7 +2,7 @@
 // @name           NDR download button
 // @description    Adds a download-button for every video and audio on ndr.de.
 // @description:de Fügt einen download-button für jedes videos und audio auf ndr.de hinzu.
-// @version        2019.06.17.1
+// @version        2019.06.17.2
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -20,9 +20,13 @@ function get_video_url()
 {
     const element = document.querySelector('[itemprop=contentUrl]');
     let url = element.getAttribute("content");
-    if (url.search("/TV-") > -1) // Only replace in URL if it is a video.
+    if (url.search("/TV-") > -1) // Upgrade Videos to HD.
     {
         url = url.replace("hq.mp4", "hd.mp4");
+    }
+    else if (url.search("/AU-") > -1) // The advertised MP4 file does not exist.
+    {
+        url = url.replace("hq.mp4", "mp3");
     }
 
     return url;

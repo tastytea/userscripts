@@ -16,7 +16,7 @@
 // @inject-into    content
 // ==/UserScript==
 
-function get_api_url()
+function get_json_url()
 {
     const iframes = document.getElementsByTagName("iframe");
 
@@ -30,9 +30,9 @@ function get_api_url()
     return null;
 }
 
-function get_video_url(url)
+function get_video_url(json_url)
 {
-    const req = new Request(url);
+    const req = new Request(json_url);
     fetch(req).then(function(response)
                     {
                         return response.json();
@@ -66,12 +66,12 @@ function add_button(url)
 
 function main()
 {
-    if (document.getElementById("tastytea_downloadbutton")  !== null)
+    if (document.getElementById("tastytea_downloadbutton") !== null)
     {
         return;
     }
 
-    const url = get_api_url();
+    const url = get_json_url();
     if (url === null)
     {
         return;

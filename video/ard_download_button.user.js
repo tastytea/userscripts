@@ -40,10 +40,11 @@ function main()
     add_button(url);
 }
 
-function get_url()
+function get_url()              // Extract URL from HTML.
 {
     const html = document.getElementsByTagName('html')[0].innerHTML;
-    const re = new RegExp('"(https://pdvideosdaserste-a\.akamaihd\.net/[^"]+/320-[^"]+\.mp4)"');
+    const re = new RegExp(
+        '"(https://pdvideosdaserste-a\.akamaihd\.net/[^"]+/320-[^"]+\.mp4)"');
     const result = re.exec(html);
     if (result.length > 0)
     {

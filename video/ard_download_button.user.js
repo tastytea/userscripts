@@ -2,7 +2,7 @@
 // @name           ARD download button
 // @description    Adds a download-button for every video on ardmediathek.de.
 // @description:de Fügt einen download-button für jedes video auf ardmediathek.de hinzu.
-// @version        2019.06.22.6
+// @version        2019.06.22.7
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -44,28 +44,28 @@ function get_url()              // Extract URL from HTML.
 {
     const html = document.getElementsByTagName('html')[0].innerHTML;
     const re_mp4 = new RegExp(  // ARD
-        '"(https://pdvideosdaserste-a\.akamaihd\.net/[^"]+/320-[^"]+\.mp4)"');
-    const re_516 = new RegExp(  // ARD, 960x544 (WTF?)
+        '"(https://pdvideosdaserste-a\.akamaihd\.net/[^"]+/[0-9]+-[^"/]+\.mp4)"', 'g');
+    const re_516 = new RegExp(  // ARD (?)
         '"(https://pdvideosdaserste-a\.akamaihd.net/[^"]+format[0-9]+\.mp4)"', 'g');
     const re_m3u = new RegExp(  // MDR
         '"(https://[^,"]+\.akamaihd\.net/[^,"]+master\.m3u8)"');
 
-    let result = re_mp4.exec(html);
+    let result = html.match(re_mp4);
     if (result !== null)
     {
-        return result[1].replace("/320-", "/1280-");
+        return result[result.length - 1].replace(/"/g, "");
     }
 
     result = html.match(re_516);
     if (result !== null)
     {
-        console.log(result);
         return result[result.length - 1].replace(/"/g, "");
     }
 
     result = re_m3u.exec(html);
     if (result !== null)
     {
+        // TODO: Actually read master.m3u and select the best stream.
         return result[1].replace("/master.m3u8", "/index_3584000_av.m3u8");
     }
 

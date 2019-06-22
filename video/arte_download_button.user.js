@@ -2,7 +2,7 @@
 // @name           arte download button
 // @description    Adds a download-button below videos on arte.tv.
 // @description:de Fügt einen download-button unter videos auf arte.tv hinzu.
-// @version        2019.06.18.1
+// @version        2019.06.22.1
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -80,4 +80,4 @@ function main()
     get_video_url(url);
 }
 
-setInterval(main, 5000); // The script is not restarted when clicking on a link.
+setInterval(main, 2000); // The script is not restarted when clicking on a link.

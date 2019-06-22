@@ -2,7 +2,7 @@
 // @name           ARD download button
 // @description    Adds a download-button for every video on ardmediathek.de.
 // @description:de Fügt einen download-button für jedes video auf ardmediathek.de hinzu.
-// @version        2019.06.22.2
+// @version        2019.06.22.3
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -48,7 +48,7 @@ function get_url()              // Extract URL from HTML.
     const re_m3u = new RegExp(  // MDR
         '"(https://[^"]+\.akamaihd\.net/[^"]+master\.m3u8)"');
 
-    for (let re of [re_320, re_master]) // Try all possible URL formats.
+    for (let re of [re_mp4, re_m3u]) // Try all possible URL formats.
     {
         const result = re.exec(html);
         if (result !== null)

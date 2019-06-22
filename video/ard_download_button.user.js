@@ -2,7 +2,7 @@
 // @name           ARD download button
 // @description    Adds a download-button for every video on ardmediathek.de.
 // @description:de Fügt einen download-button für jedes video auf ardmediathek.de hinzu.
-// @version        2019.06.22.10
+// @version        2019.06.22.11
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -37,12 +37,12 @@ function main()
 function get_url()              // Extract URL from HTML.
 {
     const html = document.getElementsByTagName('html')[0].innerHTML;
-    const re_mp4 = new RegExp('"(https://[^",]+\.mp4)"', 'g');
+    const re_mp4 = new RegExp('"(https:)?(//[^",]+\.mp4)"', 'g');
 
     let result = [...html.matchAll(re_mp4)];
     if (result !== null)
     {                           // Return the last match.
-        return result[result.length - 1][1];
+        return "https:" + result[result.length - 1][2];
     }
 
     return null;

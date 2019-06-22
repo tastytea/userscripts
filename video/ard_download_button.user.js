@@ -2,7 +2,7 @@
 // @name           ARD download button
 // @description    Adds a download-button for every video on ardmediathek.de.
 // @description:de Fügt einen download-button für jedes video auf ardmediathek.de hinzu.
-// @version        2019.06.22.1
+// @version        2019.06.22.2
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -43,12 +43,18 @@ function main()
 function get_url()              // Extract URL from HTML.
 {
     const html = document.getElementsByTagName('html')[0].innerHTML;
-    const re = new RegExp(
+    const re_mp4 = new RegExp(  // ARD
         '"(https://pdvideosdaserste-a\.akamaihd\.net/[^"]+/320-[^"]+\.mp4)"');
-    const result = re.exec(html);
-    if (result.length > 0)
+    const re_m3u = new RegExp(  // MDR
+        '"(https://[^"]+\.akamaihd\.net/[^"]+master\.m3u8)"');
+
+    for (let re of [re_320, re_master]) // Try all possible URL formats.
     {
-        return result[1].replace("/320-", "/1280-"); // Return HD URL;
+        const result = re.exec(html);
+        if (result !== null)
+        {
+            return result[1].replace("/320-", "/1280-");
+        }
     }
 
     return null;
@@ -56,6 +62,7 @@ function get_url()              // Extract URL from HTML.
 
 function add_button(url)
 {
+    // Last time I looked, there was only 1 element with that class.
     const identification = document.getElementsByClassName("identification")[0];
     if (identification === undefined)
     {

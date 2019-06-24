@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages, profile-pages and timelines.
-// @version     2019.06.13.1
+// @version     2019.06.24.1
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -23,12 +23,13 @@ let interval;
 let counter = 0;
 
 // Toggle the visibility of statuses with CW.
-function toggle(parent)
+function toggle()
 {
-    let hyperlinks = parent.getElementsByClassName("cw-status-hider");
+    const main = document.getElementsByClassName("main")[0];
+    let hyperlinks = main.getElementsByClassName("cw-status-hider");
     if (hyperlinks.length === 0) // If no status is hidden, hide all.
     {
-        hyperlinks = parent.getElementsByClassName("status-unhider");
+        hyperlinks = main.getElementsByClassName("status-unhider");
     }
 
     for (let hyperlink of hyperlinks)
@@ -38,15 +39,13 @@ function toggle(parent)
 }
 
 // Returns all conversation-headings or profile-tabs.
-function get_root_elements()
+function get_root_elements(parent)
 {
-    const main = document.getElementsByClassName("main")[0];
-
     // If conversation-heading is not there, try profile-tabs.
-    let root = main.getElementsByClassName("conversation-heading");
+    let root = parent.getElementsByClassName("conversation-heading");
     if (root.length === 0)
     {
-        root = main.getElementsByClassName("tabs");
+        root = parent.getElementsByClassName("tabs");
     }
     return root;
 }
@@ -60,8 +59,7 @@ function add_button(parent)
     button.setAttribute(
         "style", "margin-left: 1em; margin-right: 0.5em; cursor: pointer;");
     button.appendChild(document.createTextNode("Toggle all CWs"));
-    button.addEventListener('click', function()
-                            { toggle(parent.parentElement); });
+    button.addEventListener('click', toggle);
     span.append(button);
 
     const otherspans = parent.getElementsByTagName("span");
@@ -79,7 +77,7 @@ function add_button(parent)
 function check()
 {
     const re = new RegExp(
-        '(/main/(friends|public|all)|/users/[^/]+(/(mentions|dms))?)#?$');
+        '(/main/(friends|public|all)|/users/[^/]+(/(mentions|dms|interactions))?)#?$');
     const is_timeline = re.test(window.location.href);
 
     if (!is_timeline)           // If we are on a timeline, don't stop checking.
@@ -93,11 +91,16 @@ function check()
         }
     }
 
-    const root = get_root_elements();
+    const main = document.getElementsByClassName("main")[0];
+    if (main === undefined)
+    {
+        return;
+    }
+    const root = get_root_elements(main);
+
     // if root element and a status was found, disable interval and add button.
     if (root.length !== 0
-        && root[0].parentElement
-        .getElementsByClassName("status-content").length > 0)
+        && main.getElementsByClassName("status-content").length > 0)
     {
         if (!is_timeline)
         {
@@ -106,10 +109,9 @@ function check()
 
         for (let element of root)
         {
-            const parent = element.parentElement;
             // Only add button if one or more statuses have a CW.
-            if (parent.getElementsByClassName("cw-status-hider").length > 0
-                || parent.getElementsByClassName("status-unhider").length > 0)
+            if (main.getElementsByClassName("cw-status-hider").length > 0
+                || main.getElementsByClassName("status-unhider").length > 0)
             {
                 if (element.getElementsByClassName("global-cw-toggle")
                     .length > 0) // Skip if button is already there.

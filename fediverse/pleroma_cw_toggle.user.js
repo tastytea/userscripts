@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Pleroma CW toggle
 // @description Adds a button to toggle the visibility of all statuses with content warnings on status-pages, profile-pages and timelines.
-// @version     2019.06.25.1
+// @version     2019.06.25.2
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -75,11 +75,10 @@ function add_button(parent)
 // Check if we need to add a button.
 function check()
 {
-    const re = new RegExp(
-        '(/main/(friends|public|all)|/users/[^/]+(/(mentions|dms|interactions))?)#?$');
-    const is_timeline = re.test(window.location.href);
+    const re_static = new RegExp('notice/[^/]+#?$');
+    const is_static = re_static.test(window.location.href);
 
-    if (!is_timeline)           // If we are on a timeline, don't stop checking.
+    if (is_static)    // If we are on static page, stop checking after 10 tries.
     {
         ++counter;
         // If this is not Pleroma or we tried 10 times, disable interval.
@@ -98,19 +97,19 @@ function check()
     const root = get_root_elements(main);
 
     let parent;
-    if (RegExp("/main/(friends|public|all)").test(window.location.href))
+    if (RegExp("/(users/[/]+|interactions)#?$").test(window.location.href))
     {
-        parent = root[0].parentElement;
+        parent = main;
     }
     else
     {
-        parent = main;
+        parent = root[0].parentElement;
     }
     // if root element and a status was found, disable interval and add button.
     if (root.length !== 0
         && parent.getElementsByClassName("status-content").length > 0)
     {
-        if (!is_timeline)
+        if (is_static)
         {
             clearInterval(interval);
         }

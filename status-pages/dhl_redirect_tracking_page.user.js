@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Redirect DHL tracking page
 // @description Redirects to a more static version of the tracking page that doesn't reset after a short time.
-// @version     2019.06.06.1
+// @version     2019.06.28.1
 // @author      tastytea
 // @copyright   2019, tastytea (https://tastytea.de/)
 // @license     GPL-3.0-only
@@ -15,7 +15,8 @@
 // @inject-into content
 // ==/UserScript==
 
-const re = new RegExp('dhl\.de/([^/]+)/.+idc=([0-9]+)');
+const re = new RegExp(
+    'dhl\.de(?:/nextt-online-public)?/([^/]{2})/.+idc=([0-9]+)');
 const result = re.exec(window.location.href);
 
 if (result.length < 3)

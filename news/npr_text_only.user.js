@@ -2,7 +2,7 @@
 // @name           NPR text only
 // @description    Redirects to the privacy respecting, text-only version of articles on npr.org and limits the text-width to 80 characters.
 // @description:de Leitet auf die datenschutzfreundliche, nur-text version von artikeln auf npr.org weiter und beschränkt die text-breite auf 80 zeichen.
-// @version        2019.07.06.1
+// @version        2019.07.06.2
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -30,7 +30,7 @@ function main()
 
 function redirect()
 {
-    const re = new RegExp('npr\.org/[0-9]{4}/[0-9]{2}/[0-9]{2}/([0-9]+)/');
+    const re = new RegExp('/[0-9]{4}/[0-9]{2}/[0-9]{2}/([0-9]+)/');
     const result = re.exec(window.location.href);
 
     if (result !== null && result.length > 1)
@@ -39,7 +39,7 @@ function redirect()
     }
     else
     {
-        console.error("Could not find sId.");
+        console.warn("Could not find sId.");
     }
 }
 

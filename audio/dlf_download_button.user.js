@@ -2,7 +2,7 @@
 // @name           DLF download button
 // @description    Adds a download button for each audio file on DLF sites.
 // @description:de Fügt einen download-button für jede audio-datei auf DLF-seiten hinzu.
-// @version        2019.07.04.1
+// @version        2019.07.11.1
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -47,13 +47,13 @@ function add_button(url)
     button.appendChild(document.createTextNode("Download"));
 
     // Change appearance based on site.
-    if (window.location.href.search("deutschlandradio.de"))
+    if (window.location.href.search("deutschlandradio.de") > 0)
     {
         button.style.fontSize = "150%";
         button.style.fontWeight = "bold";
         button.style.color = "black";
     }
-    else if (window.location.href.search("deutschlandfunkkultur.de"))
+    else if (window.location.href.search("deutschlandfunkkultur.de") > 0)
     {
         button.setAttribute("class", "drk-articleplay");
     }

@@ -2,7 +2,7 @@
 // @name           CCC-media video-player down-mover
 // @description    Moves video-players on media.ccc.de below the download-hyperlinks.
 // @description:de Verschiebt video-player auf media.ccc.de unter die download-hyperlinks.
-// @version        2019.06.18.1
+// @version        2019.08.10.1
 // @author         tastytea
 // @copyright      2019, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -25,15 +25,15 @@ function main()
         return;
     }
 
-    // Move player between “Download” and “Related”.
-    for (let heading of document.getElementsByTagName("h3"))
+    const share = document.getElementsByClassName("share")[0];
+    if (player === undefined)
     {
-        if (heading.textContent === "Related")
-        {
-            heading.parentElement.insertBefore(player, heading);
-            break;
-        }
+        console.error("Share-widget not found.");
+        return;
     }
+
+    // Move player just above the share-widget.
+    share.parentElement.insertBefore(player, share);
 }
 
 main();

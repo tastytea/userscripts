@@ -2,9 +2,9 @@
 // @name           ARD download button
 // @description    Adds a download-button for every video on ardmediathek.de.
 // @description:de Fügt einen download-button für jedes video auf ardmediathek.de hinzu.
-// @version        2019.06.22.12
+// @version        2020.05.26.1
 // @author         tastytea
-// @copyright      2019, tastytea (https://tastytea.de/)
+// @copyright      2019-2020, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
 // @namespace      tastytea.de
 // @homepageURL    https://schlomp.space/tastytea/userscripts
@@ -51,13 +51,12 @@ function get_url()              // Extract URL from HTML.
 function add_button(url)
 {
     // Last time I looked, there was only 1 element with that class.
-    const identification = document.getElementsByClassName("identification")[0];
-    if (identification === undefined)
+    const root = document.getElementsByClassName("src__Box-sc-1sbtrzs-0 src__Flex-sc-1sbtrzs-1 Row-wbrv0h-0 rWQeG")[0];
+    if (root === undefined)
     {
         console.warn("Could not find root element.");
         return;
     }
-    const root = identification.parentElement.parentElement;
 
     const button = document.createElement("a");
     button.setAttribute("id", "tastytea_downloadbutton");

@@ -2,9 +2,9 @@
 // @name           NPR text only
 // @description    Redirects to the privacy respecting, text-only version of articles on npr.org and limits the text-width to 80 characters.
 // @description:de Leitet auf die datenschutzfreundliche, nur-text version von artikeln auf npr.org weiter und beschränkt die text-breite auf 80 zeichen.
-// @version        2019.07.06.2
+// @version        2020.06.14.1
 // @author         tastytea
-// @copyright      2019, tastytea (https://tastytea.de/)
+// @copyright      2019-2020, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
 // @namespace      tastytea.de
 // @homepageURL    https://schlomp.space/tastytea/userscripts
@@ -30,8 +30,14 @@ function main()
 
 function redirect()
 {
-    const re = new RegExp('/[0-9]{4}/[0-9]{2}/[0-9]{2}/([0-9]+)/');
-    const result = re.exec(window.location.href);
+    const re_date = new RegExp('/[0-9]{4}/[0-9]{2}/[0-9]{2}/([0-9]+)/');
+    const re_transcript = new RegExp('/transcripts/([0-9]+)$');
+    let result = re_date.exec(window.location.href);
+
+    if (result === null)
+    {
+        result = re_transcript.exec(window.location.href);
+    }
 
     if (result !== null && result.length > 1)
     {

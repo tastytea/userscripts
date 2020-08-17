@@ -9,7 +9,7 @@
 // @namespace      tastytea.de
 // @homepageURL    https://schlomp.space/tastytea/userscripts
 // @supportURL     https://schlomp.space/tastytea/userscripts/issues
-// @downloadURL    https://schlomp.space/tastytea/userscripts/raw/branch/main/goodreads_expand.user.js
+// @downloadURL    https://schlomp.space/tastytea/userscripts/raw/branch/main/catalogues/goodreads_expand.user.js
 // @grant          none
 // @match          https://www.goodreads.com/book/*
 // @run-at         document-end

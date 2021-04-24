@@ -2,7 +2,7 @@
 // @name           Goodreads expand
 // @description    Show the whole description / author information / book details on goodreads.com.
 // @description:de Zeige die ganze beschreibung / author·inneninformation / buchdetails auf goodreads.com an.
-// @version        2021.04.20.1
+// @version        2021.04.24.1
 // @author         tastytea
 // @copyright      2020, 2021, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
@@ -19,27 +19,35 @@
 
 (function()
  {
-     let root = document.getElementById("description");
-     if (root === null)
+     // Book description.
+     const description = document.getElementById("description");
+     // Author info on author page.
+     let author = document.getElementsByClassName("aboutAuthorInfo")[0];
+     if (author === undefined)
      {
-         root = document.getElementsByClassName("aboutAuthorInfo")[0];
-         if (root === null)
+         // Author info on book page.
+         author = document.getElementsByClassName("bookAuthorProfile")[0];
+     }
+
+     for (const element of [description, author])
+     {
+         if (element == null)   // null or undefined.
          {
-             console.warn("Could not find description / author info.");
-             return;
+             continue;
+         }
+
+         const spans = element.getElementsByTagName("span");
+         if (spans.length >= 2)
+         {
+             spans[1].setAttribute("style", "display: block;");
+             spans[0].setAttribute("style", "display: none;");
+
+             const links = element.getElementsByTagName("a");
+             links[links.length - 1].text = "(less)";
          }
      }
 
-     const spans = root.getElementsByTagName("span");
-     if (spans.length >= 2)
-     {
-         spans[1].setAttribute("style", "display: block;");
-         spans[0].setAttribute("style", "display: none;");
-
-         const links = root.getElementsByTagName("a");
-         links[links.length - 1].text = "(less)";
-     }
-
+     // Data below books.
      const bookdata = document.getElementById("bookDataBox");
      if (bookdata !== null)
      {

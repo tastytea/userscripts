@@ -2,9 +2,9 @@
 // @name           DLF download button
 // @description    Adds a download button for each audio file on DLF sites.
 // @description:de Fügt einen download-button für jede audio-datei auf DLF-seiten hinzu.
-// @version        2019.07.11.1
+// @version        2021.04.29.1
 // @author         tastytea
-// @copyright      2019, tastytea (https://tastytea.de/)
+// @copyright      2019, 2021, tastytea (https://tastytea.de/)
 // @license        GPL-3.0-only
 // @namespace      tastytea.de
 // @homepageURL    https://schlomp.space/tastytea/userscripts
@@ -76,7 +76,7 @@ function add_button(url)
     }
 
     // deutschlandfunknova.de
-    root = document.getElementsByClassName("meta__share")[0];
+    root = document.getElementsByClassName("podcast--buttons")[0];
     if (root !== undefined)
     {
         root.parentElement.insertBefore(button, root);
